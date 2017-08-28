@@ -1,0 +1,32 @@
+<div class="row rowPading">
+  <div class="inline col col s12 m4 offset-m4">
+    <label>Company Name</label>
+    <select class="browser-default" [(ngModel)]="compName">
+    <option value="" disabled selected [ngValue]="">Choose your companyName</option>
+    <option *ngFor="let comp of companyData" [ngValue]="comp.compName">{{comp.compName}}</option>
+    
+  </select>
+  </div>
+</div>
+<div class="row">
+  <div class="input-field inline col col s12 m4 offset-m4">
+    <input id="txtCustomerCode" type="text" class="validate" [(ngModel)]="cusCode" minlength="1">
+    <label for="txtCustomerCode" data-error="please input Customer Code">CustomerCode</label>
+  </div>
+
+</div>
+<div class="row ">
+  <div class="input-field col col s12 m4 offset-m4">
+
+    <input id="txtCustomerName" type="text" class="validate" [(ngModel)]="cusName" minlength="1">
+    <label for="txtCustomerName" data-error="please input Customer Name">CustomerName</label>
+  </div>
+</div>
+
+
+<div class="row ">
+  <div class="input-field col col s10 m5 offset-m5">
+    <th><a class="btn green" (click)="onSave()" (click)="clickEventHandler($event)">Save</a></th>
+    <th><a class="btn grey" (click)="onBack()">Back</a></th>
+  </div>
+</div>

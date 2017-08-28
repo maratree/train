@@ -1,0 +1,20 @@
+<div class="row rowPading">
+  <div class="input-field inline col col s12 m4 offset-m4">
+    <input id="txtCompanyCode" type="text" class="validate" [(ngModel)]="compCode" minlength="1">
+    <label for="txtCompanyCode" data-error="please input Company Code">CompanyCode</label>
+  </div>
+
+</div>
+<div class="row ">
+  <div class="input-field col col s12 m4 offset-m4">
+
+    <input id="txtCompanyName" type="text" class="validate" [(ngModel)]="compName" minlength="1">
+    <label for="txtCompanyName" data-error="please input Company Name">CompanyName</label>
+  </div>
+</div>
+<div class="row ">
+  <div class="input-field col col s10 m5 offset-m5">
+    <th><a class="btn green" (click)="onSave()">Save</a></th>
+    <th><a class="btn grey" (click)="onBack()">Back</a></th>
+  </div>
+</div>

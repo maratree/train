@@ -1,0 +1,36 @@
+<div class="row rowPading">
+  <div class="input-field inline col col s12 m4 offset-m4">
+    <input id="txtuserCode" type="text" class="validate" [(ngModel)]="userCode" minlength="1">
+    <label for="txtuserCode" data-error="please input User Code">UserCode</label>
+  </div>
+</div>
+
+<div class="row ">
+  <div class="input-field col col s12 m4 offset-m4">
+    <input id="txtuserName" type="text" class="validate" [(ngModel)]="userName" minlength="1">
+    <label for="txtuserName" data-error="please input User Name">UserName</label>
+  </div>
+</div>
+
+<div class="row ">
+  <div class="input-field col col s12 m4 offset-m4">
+    <input id="txtuserType" type="text" class="validate" [(ngModel)]="userType" minlength="1">
+    <label for="txtuserType" data-error="please input User Type">UserType</label>
+  </div>
+</div>
+
+<div class="row ">
+  <div class="input-field col col s12 m4 offset-m4">
+    <input id="txtuserLavel" type="text" class="validate" [(ngModel)]="userLavel" minlength="1">
+    <label for="txtuserLavel" data-error="please input User Lavel">UserLavel</label>
+  </div>
+</div>
+
+
+
+<div class="row ">
+  <div class="input-field col col s10 m5 offset-m5">
+    <th><a class="btn green" (click)="onSave()">Save</a></th>
+    <th><a class="btn grey" (click)="onBack()">Back</a></th>
+  </div>
+</div>
