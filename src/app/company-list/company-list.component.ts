@@ -67,9 +67,11 @@ export class CompanyListComponent implements OnInit {
       numPage: this.numPage,
       rowPerPage: this.rowPerPage
     }
+
     this.companyService.SearchData(searchBody).subscribe(
       data => {
-        this.companyData = data.row;
+        this.companyData = data.rows;
+        console.log(this.companyData);
         this.total = data.total;
         this.renderPaging();
       }, error => {

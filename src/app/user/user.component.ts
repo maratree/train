@@ -1,87 +1,113 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from '../shared/user/user';
 import { UserService } from '../user.service'
+import { UploadService } from '../shared/user/upload.service';
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  providers: [UserService]
+  providers: [UserService, UploadService]
 })
 export class UserComponent implements OnInit {
+
+  user: User;
+  mode: string = "ADD";
+  id: string = "";
+  filesToUpload: Array<File>;
+  url = "";
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
-  ) { }
-  userCode: string;
-  userName: string;
-  userType: string;
-  userLavel: string;
-  userData = [];
-  id: number = 0;
-  mode: string = '';
+    private userService: UserService,
+    private uploadService: UploadService
+  ) {
+    this.user = new User();
+  }
+
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
         let id = params["id"];
-        this.GetDataByID(id)
-        this.id = id;
+        this.userService.findById(id).subscribe(
+          user => {
+            this.user = user;
+          }, error => {
+            console.log(error);
+          });
         this.mode = "EDIT";
+        this.id = id;
       }
     });
-    setTimeout(function () {
-      Materialize.updateTextFields();
-    }, 50);
   }
-  GetDataByID(id) {
-    //Reactive
-    this.userService.loadItemByID(id).subscribe(
-      user => {
-        this.userCode = user.userCode;
-        this.userName = user.userName;
-        this.userType = user.userType;
-        this.userLavel = user.userLavel;
-      },
-      err => {
-        console.log(err);
-      });
-  }
+
   onSave() {
-    let user = {
-      userCode: this.userCode,
-      userName: this.userName,
-      userType: this.userType,
-      userLavel: this.userLavel
-    }
-    //let company: Array<any> = [];
+    // let user = {
+    //   firstName: this.user.firstName,
+    //   lastName: this.user.lastName,
+    //   phone: this.user.phone,
+    //   email: this.user.email,
+    //   password: this.user.password
+    // }
 
     if (this.mode === "EDIT") {
-      this.userService.UpdateItem(this.id, user).subscribe(
-        users => {
+      this.userService.updateItem(this.id, this.user).subscribe(
+        data => {
+          Materialize.toast('update complete.', 1000);
           this.router.navigate(['support', 'user-list']);
-          Materialize.toast("Update Complete", 3000);
+          this.upload();
         },
         err => {
           console.log(err);
-        });
+        }
+      )
+    } else {
+      this.userService.addItem(this.user).subscribe(
+        datas => {
+          this.id = datas._id;
+          Materialize.toast('save complete.', 1000);
+          this.router.navigate(['support', 'user-list']);
+          this.upload();
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
-    else {
-      //company.push(comp);
-      this.userService.addItem(user).subscribe(
-        users => {
-          //this.companyData = datas; 
-          Materialize.toast('Add Item Complete', 3000);
+  }
+
+  fileChangeEvent(fileInput) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+
+  upload() {
+    if (this.filesToUpload.length > 0) {
+      this.uploadService.makeFileRequest(
+        "avatar",
+        environment.apiUrl + "/user/profile/" + this.id,
+        [], this.filesToUpload).subscribe((res) => {
           this.router.navigate(['support', 'user-list']);
-        },
-        err => {
-          console.log(err);
         });
+    } else {
+      this.router.navigate(['support', 'user-list']);
     }
 
+  }
+  readUrl(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = (event) => {
+        this.url = event.target["result"];
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
   onBack() {
     this.router.navigate(['support', 'user-list']);
   }
-
 }

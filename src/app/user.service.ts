@@ -7,65 +7,70 @@ import { environment } from '../environments/environment';
 
 @Injectable()
 export class UserService {
+  options: RequestOptions;
 
-  constructor(private http: Http) { }
-//get item from api
+  constructor(private http: Http) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'bearer ' + localStorage.getItem('token')
+    });
+    this.options = new RequestOptions({ headers: headers });
+   }
+ 
   loadItem(): Observable<any[]> {
-    return this.http.get(`${environment.apiUrl}/user`)
+    return this.http.get(`${environment.apiUrl}/user`, this.options)
       .map((res: Response) => {
-        return   res.json();
+        return res.json();
       })
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error));
   }
-//get item from api
-  loadItemByID(id): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/user/findByID/${id}`)
+ 
+ addItem(body): Observable<any> {
+    let bodyString = JSON.stringify(body);
+    return this.http.post(
+      `${environment.apiUrl}/user`, bodyString, this.options)
       .map((res: Response) => {
-        return   res.json();
+        return res.json()
       })
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error));
   }
-     //post item from api
-  addItem(body): Observable<any> {
-    let bodyString = JSON.stringify(body); // Stringify payload
-    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.post(`${environment.apiUrl}/user`, body, options) // ...using post request
+  deleteItem(id): Observable<any[]> {
+    return this.http.delete(`${environment.apiUrl}/user/${id}`, this.options)
       .map((res: Response) => {
-        return res.json()
-      }) // ...and calling .json() on the response to return data
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any 
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw(error));
   }
-    //Delete
-  delItem(id): Observable<any> {
-    return this.http.delete(`${environment.apiUrl}/user/${id}`) // ...using post request
-      .map((res: Response) => {
-        return res.json()
-      }) // ...and calling .json() on the response to return data
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any 
-  }
-    //put
-  UpdateItem(id,body): Observable<any> {
-    let bodyString = JSON.stringify(body); // Stringify payload
-    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.put(`${environment.apiUrl}/user/${id}`, body, options) // ...using post request
-      .map((res: Response) => {
-        return res.json()
-      }) // ...and calling .json() on the response to return data
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any 
+  findById(id): Observable<any> {
+    return this.http.get(
+      `${environment.apiUrl}/user/findById/${id}`,
+      this.options
+    ).map((res: Response) => {
+      return res.json();
+    })
+      .catch((error: any) => Observable.throw(error));
   }
-SearchData(body){
-    let bodyString = JSON.stringify(body); // Stringify payload
-    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.post(`${environment.apiUrl}/user/search`, bodyString, options) // ...using post request
+  updateItem(id, body): Observable<any> {
+    delete body._id;
+    let bodyString = JSON.stringify(body);
+    return this.http.put(
+      `${environment.apiUrl}/user/${id}`, bodyString, this.options)
       .map((res: Response) => {
         return res.json()
-      }) // ...and calling .json() on the response to return data
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any 
-  }  
+      })
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  search(body): Observable<any> {
+    let bodyString = JSON.stringify(body);
+    return this.http.post(
+      `${environment.apiUrl}/user/find`, bodyString, this.options)
+      .map((res: Response) => {
+        return res.json()
+      })
+      .catch((error: any) => Observable.throw(error));
+  }
 }

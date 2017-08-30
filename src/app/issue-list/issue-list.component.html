@@ -1,0 +1,56 @@
+<nav>
+  <div class="nav-wrapper teal darken-1">
+    <form>
+      <div class="input-field">
+        <input id="search" name="search" type="search" [(ngModel)]="searchText" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons" (click)="onSearch()">find_in_page</i>
+      </div>
+
+    </form>
+  </div>
+</nav>
+<table>
+  <thead>
+    <tr>
+      <th>IssueNo</th>
+      <th>Company Code</th>
+      <th>Customer Code</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let issue of issueData; let i=index;">
+      <th>{{issue.issueNo}}</th>
+      <th>{{issue.compCode}}</th>
+      <th>{{issue.cusCode}}</th>
+      <th>{{issue.issue}}</th>
+      <th>{{issue.status}}</th>
+      <th>{{issue.date}}</th>
+      <th>
+        <a class="btn-floating btn light-blue darken-4 " (click)="onEditbtnClick(issue._id)"><i class="material-icons">edit</i></a>
+      </th>
+      <th>
+        <a class="btn-floating btn  red darken-4" (click)="onDelbtnClick(issue._id)"><i class="material-icons">delete</i></a>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="pagination tcenter">
+  <li class="waves-effect" *ngFor="let p of paging;let i = index;" [ngClass]="{'active':i==numPage}" (click)="gotoPage(i);"><a>{{p}}</a></li>
+</ul>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn right green darken-4" (click)="onAddbtnClick()"><i class="material-icons">add</i></a>
+</div>
+
+<ul class="pagination tcenter">
+  <li class="waves-effect" *ngFor="let p of paging;let i = index;" 
+      [ngClass]="{'active':i==numPage}" (click)="gotoPage(i);"><a >{{p}}</a></li>
+</ul>

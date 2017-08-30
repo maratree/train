@@ -1,0 +1,34 @@
+{
+    "issue-header": "Issue Management",
+    "public": {
+        "home": "Home",
+        "login": "Login"
+    },
+    "login": {
+        "email": "E-mail",
+        "password": "Password",
+        "email-error": "Invalid E-mail",
+        "password-error": "Invalid Password",
+        "emai-placeholder": "Please input your e-mail",
+        "password-placeholder": "Please input your password",
+        "singon": "Sing On"
+    },
+    "support": {
+        "company": "Company",
+        "customer": "Customer",
+        "user": "User",
+        "issue": "Issue",
+        "cusName-placeholder": "Please input your customer name",
+        "cusCode-placeholder": "Please input your customer code",
+        "Hcustomer": {
+            "company-name": "Company Name",
+            "customer-code": "Customer Code",
+            "customer-name": "Customer Name",
+            "company-choose": "Choose your companyName"
+        }
+    },
+    "button": {
+        "save": "Save",
+        "back": "Back"
+    }
+}

@@ -1,32 +1,54 @@
-<div class="row rowPading">
+<div class="row rowPading materialize="updateTextFields>
   <div class="input-field inline col col s12 m4 offset-m4">
-    <input id="txtuserCode" type="text" class="validate" [(ngModel)]="userCode" minlength="1">
-    <label for="txtuserCode" data-error="please input User Code">UserCode</label>
+    <input [(ngModel)]="user.firstname"  id="firstName" type="text" class="validate">
+    <label for="txtfirstname" data-error="please input First Name">FirstName</label>
   </div>
 </div>
 
 <div class="row ">
   <div class="input-field col col s12 m4 offset-m4">
-    <input id="txtuserName" type="text" class="validate" [(ngModel)]="userName" minlength="1">
-    <label for="txtuserName" data-error="please input User Name">UserName</label>
+    <input id="txtlastname" type="text" class="validate" [(ngModel)]="user.lastname" minlength="1">
+    <label for="txtlastname" data-error="please input Last Name">LastName</label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col col s12 m4 offset-m4">
+    <input id="txtphone" type="text" class="validate" [(ngModel)]="user.phone" minlength="1">
+    <label for="txtphone" data-error="please input telephone">Tel.</label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col col s12 m4 offset-m4">
+    <input id="txtemail" type="text" class="validate" [(ngModel)]="user.email" minlength="1">
+    <label for="txtemail" data-error="please input email">Email</label>
   </div>
 </div>
 
 <div class="row ">
   <div class="input-field col col s12 m4 offset-m4">
-    <input id="txtuserType" type="text" class="validate" [(ngModel)]="userType" minlength="1">
-    <label for="txtuserType" data-error="please input User Type">UserType</label>
-  </div>
-</div>
-
-<div class="row ">
-  <div class="input-field col col s12 m4 offset-m4">
-    <input id="txtuserLavel" type="text" class="validate" [(ngModel)]="userLavel" minlength="1">
-    <label for="txtuserLavel" data-error="please input User Lavel">UserLavel</label>
+    <input id="txtpassword" type="password" class="validate" [(ngModel)]="user.password" minlength="1">
+    <label for="txtpassword" data-error="please input Password">Password</label>
   </div>
 </div>
 
 
+<div class="row">
+    <div class="input-field inline col col s12 m4 offset-m4">
+        <form action="#">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload files">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <div class="row ">
   <div class="input-field col col s10 m5 offset-m5">

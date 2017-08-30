@@ -3,15 +3,18 @@
 </script>
 <nav>
   <div class="nav-wrapper  teal darken-4">
-    <a href="#!" class="brand-logo">ISSUE</a>
+    <a href="#!" class="brand-logo">{{'issue-header'|translate}}</a>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/home">{{'public.home' | translate}}</a></li>
+      <li><a routerLink="/login">{{'public.login' | translate}}</a></li>
+       <li><a class="btn" (click)="changLang();">{{currentLang}}</a></li>
+      
     </ul>
     <ul class="side-nav" id="mobile-demo">
        <li><a routerLink="/home">Home</a></li>
       <li><a routerLink="/login">Login</a></li>
+      
     </ul>
   </div>
 </nav>
@@ -30,15 +33,13 @@
         <ul>
           <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
           <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="footer-copyright">
     <div class="container">
-      © 2014 Copyright Text
+      ©2017 Copyright Issue Management 
       <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
     </div>
   </div>

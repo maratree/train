@@ -14,7 +14,7 @@ export class CustomerComponent implements OnInit {
   cusName: string;
   customerData = [];
   companyData = [];
-  compName: string = "";
+  compCode: string = "";
   id: number = 0;
   mode: string = '';
   constructor(private router: Router,
@@ -23,8 +23,16 @@ export class CustomerComponent implements OnInit {
     private companyService: CompanyService) { }
 
   ngOnInit() {
+
     this.onGetCompany();
     this.activatedRoute.params.subscribe(params => {
+      this.companyService.loadItem().subscribe((data) => {
+        this.companyData = data;
+        setTimeout(() => {
+          $('select').material_select();
+        },100);
+
+      });
       if (params['id']) {
         let id = params["id"];
         this.GetDataByID(id)
@@ -32,9 +40,10 @@ export class CustomerComponent implements OnInit {
         this.mode = "EDIT";
       }
     });
+
     setTimeout(function () {
       Materialize.updateTextFields();
-    }, 50);
+    }, 100);
 
   }
   GetDataByID(id) {
@@ -43,6 +52,7 @@ export class CustomerComponent implements OnInit {
       customer => {
         this.cusCode = customer.cusCode;
         this.cusName = customer.cusName;
+        this.compCode = customer.compCode;
       },
       err => {
         console.log(err);
@@ -62,7 +72,7 @@ export class CustomerComponent implements OnInit {
     let cus = {
       cusCode: this.cusCode,
       cusName: this.cusName,
-      compName: this.compName
+      compCode: this.compCode
     }
     //let customer: Array<any> = [];
 

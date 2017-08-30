@@ -1,12 +1,13 @@
  <nav>
     <div class="nav-wrapper teal darken-4">
-      <a href="#!" class="brand-logo">ISSUE</a>
+      <a href="#!" class="brand-logo">{{'issue-header'|translate}}</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a routerLink="/support/company-list">Company</a></li>
-        <li><a routerLink="/support/customer-list">Customer</a></li>
-        <li><a routerLink="/support/user-list">User</a></li>
-        <li><a routerLink="/support/issue-list">Issue</a></li>
+        <li><a routerLink="/support/company-list">{{'support.company' | translate}}</a></li>
+        <li><a routerLink="/support/customer-list">{{'support.customer' | translate}}</a></li>
+        <li><a routerLink="/support/user-list">{{'support.user' | translate}}</a></li>
+        <li><a routerLink="/support/issue-list">{{'support.issue' | translate}}</a></li>
+         <li><a class="btn" (click)="changLang();">{{currentLang}}</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a routerLink="/support/company-list">Company</a></li>

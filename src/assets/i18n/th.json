@@ -1,0 +1,34 @@
+{
+    "issue-header": "ระบบจัดการปัญหา",
+    "public": {
+        "home": "หน้าหลัก",
+        "login": "เข้าสู่ระบบ"
+    },
+    "login": {
+        "email": "อีเมลล์",
+        "password": "รหัสผ่าน",
+        "email-error": "อีเมลล์เกิดข้อผิดพลาด",
+        "password-error": "รหัสผ่านเกิดข้อผิดพลาด",
+        "emai-placeholder": "กรุณากรอกอีเมลล์ของคุณ",
+        "password-placeholder": "กรุณากรอกรหัสผ่านของคุุณ",
+        "singon": "เข้าสู่ระบบ"
+    },
+    "support": {
+        "company": "บริษัท",
+        "customer": "ลูกค้า",
+        "user": "ผู้ใช้งาน",
+        "issue": "แจ้งปัญหา",
+        "cusName-placeholder": "กรุณากรอกชื่อลูกค้า",
+        "cusCode-placeholder": "กรุณากรอกรหัสลูกค้า",
+        "Hcustomer": {
+            "company-name": "ชื่อบริษัท",
+            "customer-code": "รหัสลูกค้า",
+            "customer-name": "ชื่อลูกค้า",
+            "company-choose": "กรุณาเลือกบริษัท"
+        }
+    },
+    "button": {
+        "save": "บันทึก",
+        "back": "กลับ"
+    }
+}

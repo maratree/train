@@ -1,6 +1,7 @@
+import { MaterializeModule } from "angular2-materialize";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import  {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,10 +17,17 @@ import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { IssueComponent } from './issue/issue.component';
 import { IssueListComponent } from './issue-list/issue-list.component';
-import {LoginGuardService} from './login-guard.service';
+import { LoginGuardService } from './login-guard.service';
 import { TransferPipe } from './transfer.pipe';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
+// ทำ muti language
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -37,14 +45,23 @@ import {HttpModule} from '@angular/http';
     IssueComponent,
     IssueListComponent,
     TransferPipe
-  
+
   ],
   imports: [
+    MaterializeModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [LoginGuardService],
   bootstrap: [AppComponent],

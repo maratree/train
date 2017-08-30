@@ -3,22 +3,21 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class CompanyService {
-  options: RequestOptions;
+export class IssueService {
+ options: RequestOptions;
   constructor(private http: Http) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'bearer ' + localStorage.getItem('token')
     });
     this.options = new RequestOptions({ headers: headers });
-  }
-
-  //get item from api
+   }
+//get item from api
   loadItem(): Observable<any[]> {
-    return this.http.get(`${environment.apiUrl}/company`, this.options)
+    return this.http.get(`${environment.apiUrl}/issue`, this.options)
       .map((res: Response) => {
         return res.json();
       })
@@ -26,7 +25,7 @@ export class CompanyService {
   }
   //get item from api
   loadItemByID(id): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/company/findByID/${id}`, this.options)
+    return this.http.get(`${environment.apiUrl}/issue/findByID/${id}`, this.options)
       .map((res: Response) => {
         return res.json();
       })
@@ -38,7 +37,7 @@ export class CompanyService {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.post(`${environment.apiUrl}/company`, body, this.options) // ...using post request
+    return this.http.post(`${environment.apiUrl}/issue`, body, this.options) // ...using post request
       .map((res: Response) => {
         return res.json()
       }) // ...and calling .json() on the response to return data
@@ -47,7 +46,7 @@ export class CompanyService {
 
   //Delete
   delItem(id): Observable<any> {
-    return this.http.delete(`${environment.apiUrl}/company/${id}`, this.options) // ...using post request
+    return this.http.delete(`${environment.apiUrl}/issue/${id}`, this.options) // ...using post request
       .map((res: Response) => {
         return res.json()
       }) // ...and calling .json() on the response to return data
@@ -60,7 +59,7 @@ export class CompanyService {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.put(`${environment.apiUrl}/company/${id}`, body,  this.options) // ...using post request
+    return this.http.put(`${environment.apiUrl}/issue/${id}`, body,  this.options) // ...using post request
       .map((res: Response) => {
         return res.json()
       }) // ...and calling .json() on the response to return data
@@ -71,10 +70,11 @@ export class CompanyService {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
-    return this.http.post(`${environment.apiUrl}/company/search`, bodyString, this.options) // ...using post request
+    return this.http.post(`${environment.apiUrl}/issue/search`, bodyString, this.options) // ...using post request
       .map((res: Response) => {
         return res.json()
       }) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any 
   }
+
 }

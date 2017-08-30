@@ -7,21 +7,21 @@
   <div class="row">
       <div class="input-field inline col col s12 m4 offset-m4">
          <i class="material-icons prefix">account_box</i>
-        <input id="email" type="email" class="validate grey-text text-darken-1" [(ngModel)]="email" minlength="1" >
-        <label for="email" data-error="please input valid email." data-success="right">Email</label>
+        <input id="email" [(ngModel)]="login.email" type="email"  [placeholder]="'login.emai-placeholder'| translate" class="validate grey-text text-darken-1"  minlength="1" >
+        <label for="email" [attr.data-error]="'login.email-error'| translate">{{'login.email' | translate}}</label>
       </div>
 
   </div>
   <div class="row ">
     <div class="input-field col col s12 m4 offset-m4">
       <i class="material-icons prefix">lock</i>
-      <input id="password" type="password" class="validate grey-text text-darken-1" [(ngModel)]="password" minlength="3" pattern="\d{3,8}" > 
-      <label for="password" data-error="password invalid">Password</label>
+      <input id="password" type="password" class="validate grey-text text-darken-1" [(ngModel)]="login.password"  [placeholder]="'login.password-placeholder'| translate" minlength="3" pattern="\d{3,8}" > 
+      <label for="password" data-error="password invalid">{{'login.password' | translate}}</label>
     </div>
   </div>
    <div class="row" >
-     <a class="waves-effect waves-light btn col s8 m6 l5 xl2 offset-s2 offset-m3 offset-l4 offset-xl5 teal darken-1" (click)="doLogin()" >Sign On</a>
-   
+     <a class="waves-effect waves-light btn col s8 m6 l5 xl2 offset-s2 offset-m3 offset-l4 offset-xl5 teal darken-1" (click)="doLogin()" >{{'login.singon' | translate}}</a>
   </div>
-<h1>{{email}}</h1>
-<h1>{{password}}</h1>
+<h5>
+  {{login | json}}
+</h5>
