@@ -1,12 +1,12 @@
-<div class="row rowPading">
+<!-- <div class="row rowPading">
     <div class="input-field inline col col s12 m4 offset-m4">
         <input id="txtIssueNo" name="issueNo" type="text" class="validate" [(ngModel)]="issueNo" placeholder="please input Issue No"
             minlength="1" />
         <label for="txtIssueNo" data-error="please input Issue No">IssueNo.</label>
     </div>
-</div>
+</div> -->
 
-<div class="row ">
+<div class="row rowPading">
     <div class="input-field col col s12 m4 offset-m4">
         <select [(ngModel)]="compCode" materialize="material_select" [materializeSelectOptions]="companyData">
       <option value="" disabled selected>Choose your company name</option>
@@ -33,7 +33,7 @@
         <select [(ngModel)]="userCode" materialize="material_select" [materializeSelectOptions]="userData"> 
       <option value="" disabled selected>Choose your user name</option>
       <option *ngFor="let user of userData;"
-       [value]="user.userCode">{{user.userName}}</option>
+       [value]="user.firstname">{{user.firstname}}</option>
     </select>
         <label>User Name</label>
     </div>
@@ -69,6 +69,9 @@
         <form action="#">
             <label for="Status">Status</label>
             <p>
+                <input class="with-gap" name="group1" type="radio" id="rdoNew" value="New" [(ngModel)]="status"/>
+                <label for="rdoNew">New</label>
+
                 <input class="with-gap" name="group1" type="radio" id="rdoInprocess" value="In Process" [(ngModel)]="status"/>
                 <label for="rdoInprocess">Inprocess</label>
 
@@ -87,7 +90,7 @@
             <div class="file-field input-field">
                 <div class="btn">
                     <span>File</span>
-                    <input type="file" multiple>
+                    <input type="file" name="avatar" (change)="fileChangeEvent($event);" multiple>
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload one or more files">

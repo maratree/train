@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CustomerService } from '../customer.service'
-import { CompanyService } from '../company.service'
-import { UserService } from '../user.service'
-import { IssueService } from '../shared/issue/issue.service'
+import { CustomerService } from '../customer.service';
+import { CompanyService } from '../company.service';
+import { UserService } from '../user.service';
+import { UploadService } from '../shared/issue/upload.service';
+import { IssueService } from '../shared/issue/issue.service';
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-issue',
   templateUrl: './issue.component.html',
   styleUrls: ['./issue.component.css'],
-  providers: [CustomerService, CompanyService, IssueService, UserService]
+  providers: [CustomerService, CompanyService, IssueService, UserService, UploadService]
 })
 export class IssueComponent implements OnInit {
   compCode: string;
@@ -25,12 +28,14 @@ export class IssueComponent implements OnInit {
   id: number = 0;
   mode: string = '';
   test: string;
+  filesToUpload: Array<File>;
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private customerService: CustomerService,
     private companyService: CompanyService,
     private issueService: IssueService,
-    private userService: UserService
+    private userService: UserService,
+    private uploadService: UploadService
   ) { }
 
   ngOnInit() {
@@ -132,6 +137,7 @@ export class IssueComponent implements OnInit {
         issue => {
           this.router.navigate(['support', 'issue-list']);
           Materialize.toast("Update Complete", 3000);
+          this.upload();
         },
         err => {
           console.log(err);
@@ -143,6 +149,7 @@ export class IssueComponent implements OnInit {
         issue => {
           Materialize.toast('Add Item Complete', 3000);
           this.router.navigate(['support', 'issue-list']);
+          this.upload();
         },
         err => {
           console.log(err);
@@ -150,6 +157,23 @@ export class IssueComponent implements OnInit {
 
 
     }
+  }
+  fileChangeEvent(fileInput) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+
+  upload() {
+    if (this.filesToUpload.length > 0) {
+      this.uploadService.makeFileRequest(
+        "avatar",
+        environment.apiUrl + "/issue/profile/" + this.id,
+        [], this.filesToUpload).subscribe((res) => {
+          this.router.navigate(['support', 'issue-list']);
+        });
+    } else {
+      this.router.navigate(['support', 'issue-list']);
+    }
+
   }
   onBack() {
     this.router.navigate(['support', 'issue-list']);
