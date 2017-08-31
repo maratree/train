@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import{ HomeComponent} from './home/home.component';
-import{ LoginComponent} from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { PublicZoneComponent } from './public-zone/public-zone.component';
 import { SupportZoneComponent } from './support-zone/support-zone.component';
 import { CompanyComponent } from './company/company.component';
@@ -12,48 +12,51 @@ import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { IssueComponent } from './issue/issue.component';
 import { IssueListComponent } from './issue-list/issue-list.component';
-import{  LoginGuardService} from './login-guard.service'
+import { LoginGuardService } from './login-guard.service'
+import { IssueAttachComponent } from './issue-attach/issue-attach.component';
 
 const routes: Routes = [
   {
     path: '',
-    component:PublicZoneComponent,
+    component: PublicZoneComponent,
     children: [{
-      path:'home',component:HomeComponent
-    },{
-      path:'login',component:LoginComponent
+      path: 'home', component: HomeComponent
+    }, {
+      path: 'login', component: LoginComponent
     }]
   },
   {
     path: 'support',
-    component:SupportZoneComponent,
-    canActivate:[LoginGuardService],
+    component: SupportZoneComponent,
+    canActivate: [LoginGuardService],
     children: [{
-      path:'',component:IssueListComponent
-    },{
-      path:'company',component:CompanyComponent
-    },{
-      path:'company/:id',component:CompanyComponent
-    },{
-      path:'company-list',component:CompanyListComponent
-    },{
-      path:'customer',component:CustomerComponent
-    },{
-      path:'customer/:id',component:CustomerComponent
-    },{
-      path:'customer-list',component:CustomerListComponent
-    },{
-      path:'user',component:UserComponent
-    },{
-      path:'user/:id',component:UserComponent
-    },{
-      path:'user-list',component:UserListComponent
-    },{
-      path:'issue',component:IssueComponent
-    },{
-      path:'issue/:id',component:IssueComponent
-    },{
-      path:'issue-list',component:IssueListComponent
+      path: '', component: IssueListComponent
+    }, {
+      path: 'company', component: CompanyComponent
+    }, {
+      path: 'company/:id', component: CompanyComponent
+    }, {
+      path: 'company-list', component: CompanyListComponent
+    }, {
+      path: 'customer', component: CustomerComponent
+    }, {
+      path: 'customer/:id', component: CustomerComponent
+    }, {
+      path: 'customer-list', component: CustomerListComponent
+    }, {
+      path: 'user', component: UserComponent
+    }, {
+      path: 'user/:id', component: UserComponent
+    }, {
+      path: 'user-list', component: UserListComponent
+    }, {
+      path: 'issue', component: IssueComponent
+    }, {
+      path: 'issue/:id', component: IssueComponent
+    }, {
+      path: 'issue-list', component: IssueListComponent
+    }, {
+      path: 'issue-attach/:issueno', component: IssueAttachComponent
     }]
 
   }

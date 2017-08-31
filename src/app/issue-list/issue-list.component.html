@@ -21,12 +21,13 @@
       <th>Date</th>
       <th>Edit</th>
       <th>Delete</th>
+      <th>Attach</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let issue of issueData; let i=index;">
-      <th>{{issue.issueno}}</th>
+      <th>{{issue.issueno | uppercase}}</th>
       <th>{{issue.compCode}}</th>
       <th>{{issue.cusCode}}</th>
       <th>{{issue.issue}}</th>
@@ -37,6 +38,9 @@
       </th>
       <th>
         <a class="btn-floating btn  red darken-4" (click)="onDelbtnClick(issue._id)"><i class="material-icons">delete</i></a>
+      </th>
+      <th>
+        <a class="btn-floating btn  light-green darken-3" (click)="onActtachbtnClick(issue.issueno);"><i  class="material-icons">attach_file</i></a>
       </th>
     </tr>
   </tbody>

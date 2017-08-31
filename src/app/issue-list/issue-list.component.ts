@@ -41,6 +41,9 @@ export class IssueListComponent implements OnInit {
   onEditbtnClick(id) {
     this.router.navigate(['support', 'issue', id]);
   }
+  onActtachbtnClick(id){{
+    this.router.navigate(['support', 'issue-attach', id]);
+  }}
   onDelbtnClick(id) {
 
     this.issueService.delItem(id).subscribe(
