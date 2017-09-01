@@ -1,20 +1,22 @@
 <div class="row rowPading" materialize="updateTextFields">
   <div class="input-field inline col col s12 m4 offset-m4">
-    <input id="txtCompanyCode" type="text" class="validate" [(ngModel)]="compCode" minlength="1">
-    <label for="txtCompanyCode" data-error="please input Company Code">CompanyCode</label>
+    <input id="txtCompanyCode" type="text" class="validate" [(ngModel)]="compCode" minlength="1"
+     [placeholder]="'support.Hcompany.compCode-placeholder'| translate">
+    <label for="txtCompanyCode" data-error="please input Company Code">{{'support.Hcompany.company-code'| translate}}</label>
   </div>
 
 </div>
 <div class="row ">
   <div class="input-field col col s12 m4 offset-m4">
 
-    <input id="txtCompanyName" type="text" class="validate" [(ngModel)]="compName" minlength="1">
-    <label for="txtCompanyName" data-error="please input Company Name">CompanyName</label>
+    <input id="txtCompanyName" type="text" class="validate" [(ngModel)]="compName" minlength="1" 
+    [placeholder]="'support.Hcompany.compName-placeholder'| translate">
+    <label for="txtCompanyName" data-error="please input Company Name">{{'support.Hcompany.company-name'| translate}}</label>
   </div>
 </div>
 <div class="row ">
   <div class="input-field col col s10 m5 offset-m5">
-    <th><a class="btn green" (click)="onSave()">Save</a></th>
-    <th><a class="btn grey" (click)="onBack()">Back</a></th>
+    <th><a class="btn green" (click)="onSave()">{{'button.save' | translate}}</a></th>
+    <th><a class="btn grey" (click)="onBack()">{{'button.back' | translate}}</a></th>
   </div>
 </div>

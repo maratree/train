@@ -1,7 +1,7 @@
 <nav>
   <div class="nav-wrapper teal darken-1">
     <form>
-      <div class="input-field">
+      <div class="input-field ">
         <input id="search" name="search" type="search"  [(ngModel)]="searchText" required>
         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
         <i class="material-icons" (click)="onSearch()">find_in_page</i>
@@ -12,11 +12,11 @@
 </nav>
 <table>
   <thead>
-    <tr>
-      <th>Company Code</th>
-      <th>Company Name</th>
-      <th>Edit</th>
-      <th>Delete</th>
+    <tr class="card-panel  blue-grey lighten-4 ">
+      <th>{{'support.Hcompany.company-code'| translate}}</th>
+      <th>{{'support.Hcompany.company-name'| translate}}</th>
+      <th>{{'button.edit'| translate}}</th>
+      <th>{{'button.delete'| translate}}</th>
     </tr>
   </thead>
 

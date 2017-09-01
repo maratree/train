@@ -9,40 +9,41 @@
 <div class="row rowPading">
     <div class="input-field col col s12 m4 offset-m4">
         <select [(ngModel)]="compCode" materialize="material_select" [materializeSelectOptions]="companyData">
-      <option value="" disabled selected>Choose your company name</option>
+      <option value="" disabled selected [ngValue]="">{{'support.Hissue.compName-placeholder'| translate}}</option>
       <option *ngFor="let comp of companyData;"
        [value]="comp.compCode">{{comp.compName}}</option>
     </select>
-        <label>Company Name</label>
+        <label>{{'support.Hcompany.company-name'| translate}}</label>
     </div>
 </div>
 
 <div class="row">
     <div class="input-field col col s12 m4 offset-m4">
         <select [(ngModel)]="cusCode" materialize="material_select" [materializeSelectOptions]="customerData"> 
-      <option value="" disabled selected>Choose your customer name</option>
+      <option value="" disabled selected>{{'support.Hissue.cusName-placeholder'| translate}}</option>
       <option *ngFor="let cus of customerData;"
        [value]="cus.cusCode">{{cus.cusName}}</option>
     </select>
-        <label>Customer Name</label>
+        <label>{{'support.Hcustomer.customer-name'| translate}}</label>
     </div>
 </div>
 
 <div class="row">
     <div class="input-field col col s12 m4 offset-m4">
         <select [(ngModel)]="userCode" materialize="material_select" [materializeSelectOptions]="userData"> 
-      <option value="" disabled selected>Choose your user name</option>
+      <option value="" disabled selected>{{'support.Huser.username-placeholder'| translate}}</option>
       <option *ngFor="let user of userData;"
        [value]="user.firstname">{{user.firstname}}</option>
     </select>
-        <label>User Name</label>
+        <label>{{'support.Huser.username'| translate}}</label>
     </div>
 </div>
 
 <div class="row">
     <div class="input-field inline col col s12 m4 offset-m4">
-        <input [(ngModel)]="issue" id="txtIssue" name="issue" type="text" class="validate">
-        <label for="txtIssue" data-error="please input Title">Title</label>
+        <input [(ngModel)]="issue" id="txtIssue" name="issue" type="text" class="validate" 
+        [placeholder]="'support.Hissue.title-placeholder'| translate">
+        <label for="txtIssue" data-error="please input Title">{{'support.Hissue.title'| translate}}</label>
     </div>
 </div>
 
@@ -50,8 +51,9 @@
     <form class="col s12">
         <div class="row">
             <div class="input-field  col col s12 m4 offset-m4">
-                <textarea [(ngModel)]="description" name="description" id="txtDescription" class="materialize-textarea" [(ngModel)]="description" placeholder="please input Description"></textarea>
-                <label for="txtDescription">Description</label>
+                <textarea [(ngModel)]="description" name="description" id="txtDescription" class="materialize-textarea" 
+                [(ngModel)]="description" [placeholder]="'support.Hissue.desc-placeholder'| translate"></textarea>
+                <label for="txtDescription">{{'support.Hissue.description'| translate}}</label>
             </div>
         </div>
     </form>
@@ -60,14 +62,14 @@
 <div class="row">
     <div class="input-field inline col col s12 m4 offset-m4">
         <input type="text" [(ngModel)]="date" class="datepicker" [(ngModel)]="date" name="date" materialize="pickadate" [materializeParams]="[{closeOnSelect: true,format:'dd/mm/yyyy'}]">
-        <label for="txtDate">Issue Date</label>
+        <label for="txtDate">{{'support.Hissue.date'| translate}}</label>
     </div>
 </div>
 
 <div class="row">
     <div class="col col s12 m4 offset-m4">
         <form action="#">
-            <label for="Status">Status</label>
+            <label for="Status">{{'support.Hissue.status'| translate}}</label>
             <p>
                 <input class="with-gap" name="group1" type="radio" id="rdoNew" value="New" [(ngModel)]="status"/>
                 <label for="rdoNew">New</label>
@@ -89,11 +91,11 @@
         <form action="#">
             <div class="file-field input-field">
                 <div class="btn">
-                    <span>File</span>
+                    <span>{{'button.upload'| translate}}</span>
                     <input type="file" name="avatar" (change)="fileChangeEvent($event);" multiple>
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                    <input class="file-path validate" type="text" [placeholder]="'button.uploadF-placeholder'| translate">
                 </div>
             </div>
         </form>
@@ -101,7 +103,7 @@
 </div>
 <div class="row ">
     <div class="input-field col col s10 m5 offset-m5">
-        <th><a class="btn green" (click)="onSave()">Save</a></th>
-        <th><a class="btn grey" (click)="onBack()">Back</a></th>
+        <th><a class="btn green" (click)="onSave()">{{'button.save'| translate}}</a></th>
+        <th><a class="btn grey" (click)="onBack()">{{'button.back'| translate}}</a></th>
     </div>
 </div>

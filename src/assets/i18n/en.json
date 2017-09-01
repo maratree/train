@@ -25,10 +25,49 @@
             "customer-code": "Customer Code",
             "customer-name": "Customer Name",
             "company-choose": "Choose your companyName"
+        },
+        "Hcompany": {
+            "company-code": "Company Code",
+            "company-name": "Company Name",
+            "compCode-placeholder": "Please input your company code",
+            "compName-placeholder": "Please input your company name"
+        },
+        "Huser": {
+            "firstname": "FirstName",
+            "lastname": "LastName",
+            "phone": "Tel.",
+            "email": "E-mail",
+            "password": "Password",
+            "Fname-placeholder": "Please input your first name",
+            "Lname-placeholder": "Please input your last name",
+            "phone-placeholder": "Please input your phone number",
+            "email-placeholder": "Please input your e-mail",
+            "password-placeholder": "Please input your password",
+            "username": "Username",
+            "username-placeholder": "Choose username"
+        },
+        "Hissue": {
+            "issueno": "Issue No.",
+            "title": "Title",
+            "status": "Status",
+            "date": "Date",
+            "description": "Description",
+            "title-placeholder": "Please input title",
+            "desc-placeholder": "Please input title",
+            "compName-placeholder": "Choose company name",
+            "cusName-placeholder": "Choose customer name",
+            "user-placeholder": "Choose user"
         }
     },
     "button": {
         "save": "Save",
-        "back": "Back"
+        "back": "Back",
+        "edit": "Edit",
+        "delete": "Delete",
+        "remove": "Remove",
+        "upload": "Upload",
+        "uploadP-placeholder": "Upload Picture",
+        "uploadF-placeholder": "Upload File",
+        "attach": "Attach"
     }
 }

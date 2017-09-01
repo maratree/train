@@ -9,8 +9,8 @@
         "password": "รหัสผ่าน",
         "email-error": "อีเมลล์เกิดข้อผิดพลาด",
         "password-error": "รหัสผ่านเกิดข้อผิดพลาด",
-        "emai-placeholder": "กรุณากรอกอีเมลล์ของคุณ",
-        "password-placeholder": "กรุณากรอกรหัสผ่านของคุุณ",
+        "emai-placeholder": "กรอกอีเมลล์ของคุณ",
+        "password-placeholder": "กรอกรหัสผ่านของคุุณ",
         "singon": "เข้าสู่ระบบ"
     },
     "support": {
@@ -18,17 +18,57 @@
         "customer": "ลูกค้า",
         "user": "ผู้ใช้งาน",
         "issue": "แจ้งปัญหา",
-        "cusName-placeholder": "กรุณากรอกชื่อลูกค้า",
-        "cusCode-placeholder": "กรุณากรอกรหัสลูกค้า",
+        "cusName-placeholder": "กรอกชื่อลูกค้า",
+        "cusCode-placeholder": "กรอกรหัสลูกค้า",
         "Hcustomer": {
             "company-name": "ชื่อบริษัท",
             "customer-code": "รหัสลูกค้า",
             "customer-name": "ชื่อลูกค้า",
-            "company-choose": "กรุณาเลือกบริษัท"
+            "company-choose": "เลือกบริษัท"
+        },
+        "Hcompany": {
+            "company-code": "รหัสบริษัท",
+            "company-name": "ชื่อบริษัท",
+            "compCode-placeholder": "กรอกรหัสบริษัท",
+            "compName-placeholder": "กรอกชื่อบริษัท"
+        },
+        "Huser": {
+            "firstname": "ชื่อจริง",
+            "lastname": "นามสกุล",
+            "phone": "เบอร์โทรศัพท์",
+            "email": "อีเมลล์",
+            "password": "รหัสผ่าน",
+            "Fname-placeholder": "กรอกชื่อจริง",
+            "Lname-placeholder": "กรอกนามสกุล",
+            "phone-placeholder": "กรอกเบอร์โทรศัพท์",
+            "email-placeholder": "กรอกอีเมลล์",
+            "password-placeholder": "กรอกรหัสผ่าน",
+            "username":"ชื่อผู้ใช้งาน",
+            "username-placeholder":"เลือกผู้ใช้งาน"
+        },
+         "Hissue": {
+            "issueno":"Issue No.",
+            "title":"หัวข้อปัญหา",
+            "status":"สถานะ",
+            "date":"วันที่",
+            "description":"คำอธิบาย",
+            "title-placeholder": "กรอกหัวข้อของปัญหา",
+            "desc-placeholder": "กรอกคำอธิบายของปัญหา", 
+            "compName-placeholder": "เลือกบริษัท",
+            "cusName-placeholder": "เลือกลูกค้า",
+            "user-placeholder": "เลือกผู้ใช้งาน"
         }
     },
     "button": {
         "save": "บันทึก",
-        "back": "กลับ"
+        "back": "กลับ",
+        "edit": "แก้ไข",
+        "delete": "ลบ",
+        "remove": "ลบทิ้ง",
+        "upload": "อัปโหลด",
+        "uploadP-placeholder": "อัปโหลดรูปภาพ",
+        "uploadF-placeholder": "อัปโหลดไฟล์",
+        "attach":"แนบไฟล์"
+
     }
 }
